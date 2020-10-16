@@ -30,4 +30,4 @@ export default class AddMovie {
             </form>
         </div>
     )}
-}
+}/// lahdhaa njikee 
