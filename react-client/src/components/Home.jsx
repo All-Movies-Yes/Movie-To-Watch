@@ -15,6 +15,13 @@ export default class Home extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     
         }
+        // A helper function to make api calls easier 
+        /**
+         * 
+         * @param {*} path // /movie/add ...
+         * @param {*} method // post , get , put , delete 
+         * @param {*} body  // req.body on the server
+         */
     api(path, method = 'GET', body = null,) {
         const url ="http://localhost:3000" + path;
       
@@ -49,7 +56,14 @@ export default class Home extends Component {
            description:this.state.description,
            imageurl:this.state.imageurl
         }
+        /**
+         * calling the api function with 3 parameters 
+         * the path we specified /movie/addMovie
+         * the method POST
+         * and the req.body that is movie {}
+         */
        const res =  await this.api('/movie/addMovie','POST',movie)
+       //if the status is 200 OK else throw an error 
        if(res.status===200){
            return[];
        }
@@ -60,6 +74,11 @@ export default class Home extends Component {
     async handleDelete(moviename){
         console.log("will be deleted")
         console.log(moviename)
+        // khdhyt data li fl state hatithom fi array movies w bel filter na9es l objet li esmah nafs l esm mta3 li nzelna aaleha bsh nfasskhouha
+        // baaed badel state bl array jdid .
+       let movies =  this.state.data.filter(movie=>movie.moviename!=moviename)
+       console.log(movies)
+       this.setState({data:movies})
         const movie = {
             moviename
         }
@@ -73,6 +92,7 @@ export default class Home extends Component {
         }
     }
    componentDidMount(){
+       // calling the api and getting the data then pushing them to the state when the component mounts
     axios.get("http://localhost:3000/movie")
     .then(response=>{
         this.setState({data:response.data})
@@ -84,17 +104,18 @@ export default class Home extends Component {
         return (
             <div className="back">
                 <div id="logoLeft">M-T-W</div>
+                <h1>Add Your Favorit Movie</h1>
                 <div className="register">
                 <form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">name</label>
-            <input type="text" id="name" name="moviename" onChange={this.handleChange} /><br/>
-            <label htmlFor="category">category</label>
-            <input type="text" id="category" name="category" onChange={this.handleChange} /><br/>
-            <label htmlFor="description">description</label>
-            <input type="text" id="description" name="description" onChange={this.handleChange}/><br/>
-            <label htmlFor="description">image url</label>
-            <input type="text" id="image" name="imageurl" onChange={this.handleChange} /><br />
-            <input type="submit" value="add movie" />
+            <input type="text" id="name" name="moviename" autoComplete="off" placeholder="name" onChange={this.handleChange} /><br/>
+         
+            <input type="text" id="category" name="category" autoComplete="off"  placeholder="category" onChange={this.handleChange} /><br/>
+
+            <input type="text" id="description" name="description" autoComplete="off"  placeholder="description" onChange={this.handleChange}/><br/>
+
+            <input type="text" id="image" name="imageurl" autoComplete="off"  placeholder="image url" onChange={this.handleChange} /><br />
+         
+            <input type="submit" value="add movie" className="submitBtn" />
             </form>
                     <h1> Movies To Watch </h1>
                         <div className="container">
@@ -103,15 +124,14 @@ export default class Home extends Component {
                             this.state.data.map((movie,index)=>{
                                 return (
 
-                                    <div className="col-sm-4" key={movie._id} style={{backgroundImage:`url:(${movie.imageurl})`,backgroundSize:"cover",backgroundRepeat:"no-repeat"}}>
+                                    <div  key={movie._id} style={{backgroundImage:`url:(${movie.imageurl})`,backgroundSize:"cover",backgroundRepeat:"no-repeat"}}>
                                     <h1>{movie.moviename}</h1>
                                     <span onClick={()=>this.handleDelete(movie.moviename)} style={{border:"1px solid white",padding:"10px",backgroundColor:"transparent"}}> 
                                         Delete
                                     </span>
                                     <p>
                                         {movie.description}
-                                        {movie.releasedate
-}
+                                        {movie.releasedate}
                                     </p>
                                     <img src={movie.imageurl} alt="image url " width="250" height="200"/>
                                 </div>
