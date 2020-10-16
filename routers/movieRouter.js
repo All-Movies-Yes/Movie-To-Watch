@@ -1,6 +1,6 @@
 const router = require('express').Router();
 let Movie = require('../database-mongo/movieList');
-// const { Router } = require('express');
+
 
 
 router.get('/', (req, res) => {
@@ -9,14 +9,8 @@ router.get('/', (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// const test2 = new Movie({
-//     moviename: "wiii",
-//     category: 'nkznfff',
-//     imageurl: "urlfds",
-//     description: 'npoooo',
-//     releasedate: '2000'
-// })
-// console.log(test2)
+
+
 router.post('/addMovie', (req, res) => {
     const moviename = req.body.moviename;
     const category = req.body.category;
@@ -45,9 +39,9 @@ router.post('/wish', (req, res) => {
         .then(() => res.json('movie saved'))
         .catch(err => res.status(400).json('Error: ' + err));
 })
-router.delete('/del', (req, res) => {
+router.delete('/del', async(req, res) => {
     const moviename = req.body.moviename;
-    const movie = Movie.deleteOne({ 'moviename': moviename })
+   await Movie.deleteOne({ 'moviename': moviename })
         .then(() => res.json('movie deleted'))
         .catch(() => res.status(400).json('Error: ' + err))
 })

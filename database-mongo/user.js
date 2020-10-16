@@ -14,10 +14,6 @@ const userSchema = new Schema({
 })
 
 const User = mongoose.model('User', userSchema);
-// const test = new User({
-//     id: "333",
-//     whishList: "hhh"
-// })
-// console.log(test)
+
 
 module.exports = User

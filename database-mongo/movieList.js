@@ -22,13 +22,6 @@ const movieSchema = new Schema({
     timestamps: true
 });
 const Movie = mongoose.model('Movie', movieSchema);
-// const test = new Movie({
-//     moviename: "wiii",
-//     category: 'nkzn',
-//     imageurl: "url",
-//     description: 'npoooo',
-//     releasedate: 'jfnknfk'
-// })
-// console.log(test)
+
 module.exports = Movie
 
