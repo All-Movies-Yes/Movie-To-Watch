@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import $ from "jquery";
 import { Redirect, Route } from "react-router-dom";
-// import dashboard from './dashboard/jsx'
+
 
 export class SignIn extends Component {
   constructor(props) {
@@ -48,15 +48,15 @@ export class SignIn extends Component {
     });
   }
 
-  redirectToSignUp(){
-	this.setState({
-	    redirectToSignUp: true
-	}) 
- }
+  redirectToSignUp() {
+    this.setState({
+      redirectToSignUp: true
+    })
+  }
 
   render() {
     const form = { marginTop: "100px" };
-    const formStyle = { width: "25%", textAlign: "left" };
+    const formStyle = { color: "white", width: "25%", textAlign: "left" };
     const buttonStyle1 = {
       width: "100%",
       marginTop: "10px",
@@ -64,24 +64,24 @@ export class SignIn extends Component {
       fontSize: "20px",
       padding: "7px",
       textAlign: "center",
-      background: "#2196f3"
+      background: "#e50914"
     };
     const errors = {
       marginTop: "10px",
-      color: "red",
+      color: "e50914",
       fontSize: "30px",
       padding: "7px",
       textAlign: "center"
     };
 
-    if(this.state.redirectToSignUp){
-        this.setState({
-            redirectToSignUp: false
-        })
-        return  <Redirect to={{
-          pathname: '/',
-          
-        }} />
+    if (this.state.redirectToSignUp) {
+      this.setState({
+        redirectToSignUp: false
+      })
+      return <Redirect to={{
+        pathname: '/',
+
+      }} />
     }
 
     if (this.state.redirect) {
@@ -98,8 +98,9 @@ export class SignIn extends Component {
     }
 
     return (
-      <div style={form}>
+      <div className="ndBack" style={form}>
         <center>
+          <h2 id="under">We are happy to see you again in Movie To Watch.</h2>
           <form
             className="form-group"
             style={formStyle}
@@ -128,10 +129,10 @@ export class SignIn extends Component {
               />
             </div>
             <center>
-              <button style={buttonStyle1} type="submit">
+              <button id="signIn" style={buttonStyle1} type="submit">
                 Sign In
               </button>
-              <a  onClick={this.redirectToSignUp.bind(this)}>Don't Have an Account</a>
+              <button className="btnn" onClick={this.redirectToSignUp.bind(this)}>Don't Have an Account</button>
             </center>
             <br />
             <p style={errors}>{this.state.error}</p>
