@@ -37,10 +37,11 @@ router.post('/addMovie', (req, res) => {
         .catch(err => res.status(400).json('Err ' + err))
 })
 
-
+// TODO: user 
 router.post('/wish', (req, res) => {
     const moviename = req.body.moviename;
     const movie = Movie.findOne({ 'moviename': moviename });
+    console.log(movie)
     movie.create()
         .then(() => res.json('movie saved'))
         .catch(err => res.status(400).json('Error: ' + err));

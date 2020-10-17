@@ -7,7 +7,7 @@ const userSchema = new Schema({
 
     },
     whishList: {
-        type: String
+        type: Array
     }
 }, {
     timestamps: true

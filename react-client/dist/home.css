@@ -1,3 +1,6 @@
+body{
+    background-color:black;
+}
 .back {
     background-image: url("https://cdn.hipwallpaper.com/i/20/62/O1HKpz.jpg");
     height: 100vh;
@@ -6,6 +9,20 @@
     background-size: cover;
     
 }
+
+.footer{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #cf0e07;
+    position: static;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0.9;
+    color: rgba(0,0,0,.7);
+    text-shadow: 0 1px rgba(255, 255, 255, 0.1);
+  }
+
 #logoLeft{
     height: 32px;
     width: 108px;
@@ -16,6 +33,10 @@
     padding-top: 0.5rem;
     padding-left: 1.5rem;
     
+}
+
+.movie-image{
+    width : 30%
 }
 
 .register{
@@ -58,11 +79,11 @@
     width: 5rem;
     font-size: large;
     font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-    margin-top: 9px;
     font-weight: bold;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 0.5em;
-    
+    font-stretch: ultra-condensed;
+    font-size: 13px
 }
 
 .btn:hover {
@@ -81,5 +102,6 @@ h1{
         font-weight: bold;
         color: #fff;
         font-size: 4rem;
+        padding-left: 4em;
     
 }
